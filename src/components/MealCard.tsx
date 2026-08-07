@@ -12,7 +12,9 @@ export type Meal = {
   price: number;
   image_url: string | null;
   is_available: boolean;
+  is_featured: boolean;
 };
+
 
 export function MealCard({ meal }: { meal: Meal }) {
   const { addItem } = useCart();

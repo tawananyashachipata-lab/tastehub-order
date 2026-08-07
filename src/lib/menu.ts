@@ -5,7 +5,7 @@ import type { Meal } from "@/components/MealCard";
 async function fetchMenu(): Promise<Meal[]> {
   const { data, error } = await supabase
     .from("menu_items")
-    .select("id, name, description, category, price, image_url, is_available")
+    .select("id, name, description, category, price, image_url, is_available, is_featured")
     .order("category", { ascending: true })
     .order("name", { ascending: true });
 

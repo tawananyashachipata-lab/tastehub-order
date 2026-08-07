@@ -46,7 +46,8 @@ const highlights = [
 
 function HomePage() {
   const { data: meals = [], isLoading } = useMenu();
-  const featured = meals.slice(0, 3);
+  const featured = meals.filter((m) => m.is_featured).slice(0, 3);
+
 
   return (
     <SiteLayout>
