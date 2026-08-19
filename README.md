@@ -1,84 +1,142 @@
-# TasteHub Order
+# TasteHub Restaurant
 
-Create a modern and responsive restaurant website called TasteHub Restaurant.
+A modern, responsive restaurant ordering system built with React, TanStack Start, and Supabase.
 
-Build a simple restaurant ordering system with a clean and professional design.
+## Overview
 
-Pages:
+TasteHub Restaurant is a full-stack web application that allows customers to browse meals, add items to their cart, and place orders online. It includes a simple authentication system and an admin dashboard for restaurant owners to manage menu items and view orders.
 
-- Home page with a hero section, restaurant description, featured meals, and a button to view the menu.
+## Features
 
-- Menu page displaying food items with images, names, categories, descriptions, and prices.
+### Customer Features
+- **Browse Menu**: View all available meals with images, descriptions, and prices
+- **Shopping Cart**: Add/remove items and manage quantities
+- **User Authentication**: Simple email/password registration and login
+- **Order Placement**: Complete checkout process
+- **Responsive Design**: Works seamlessly on mobile and desktop
 
-- Cart page where users can view selected meals and place an order.
+### Admin Features
+- **Menu Management**: Add, edit, and delete menu items
+- **Order Management**: View all customer orders
+- **Dashboard**: Overview of restaurant operations
 
-- Simple Login/Register page.
+## Tech Stack
 
-- Contact page.
+- **Frontend**: React 19 with TypeScript
+- **Routing**: TanStack Router
+- **UI Components**: Radix UI + Tailwind CSS
+- **Backend**: TanStack Start (SSR/SSG)
+- **Database**: Supabase
+- **Forms**: React Hook Form + Zod validation
+- **Styling**: Tailwind CSS v4
 
-Authentication:
+## Getting Started
 
-- Create a simple email and password login/register system.
+### Prerequisites
 
-- Keep authentication basic and easy to understand.
+- Node.js 18+ (install via [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
+- npm or bun package manager
+- Supabase account (for database)
 
-- After registering, users should be able to log in and access the website.
+### Installation
 
-- Do not add Google login, social login, OTP, or complicated authentication features.
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd tastehub-restaurant
+```
 
-Features:
+2. Install dependencies:
+```bash
+npm install
+# or
+bun install
+```
 
-- Users can browse meals.
+3. Set up environment variables:
+Create a `.env` file in the root directory with your Supabase credentials:
+```
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-- Users can add meals to their cart.
-
-- Users can remove meals from their cart.
-
-- Users can place an order.
-
-- Create a simple admin dashboard where the restaurant owner can add, edit, and delete menu items and view orders.
-
-Design:
-
-- Make it look like a real modern restaurant website.
-
-- Use a warm color palette (cream, brown, orange, and black).
-
-- Create beautiful food cards.
-
-- Make it fully responsive on mobile and desktop.
-
-- Keep the UI simple, clean, and professional.
-
-Technical:
-
-- Use React.
-
-- Use a simple database setup.
-
-- Write clean and organized code.
-
-- Avoid unnecessary complex features.
-
-- Make the project easy for a beginner full-stack developer to understand and improve.
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/04e90d53-1a02-4b5f-a6f8-69c2e282d317).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+4. Start the development server:
+```bash
 npm run dev
 ```
+
+The application will be available at `http://localhost:3000`
+
+## Project Structure
+
+```
+src/
+├── components/          # Reusable UI components
+│   └── ui/             # shadcn/ui components
+├── hooks/              # Custom React hooks (auth, mobile, etc.)
+├── integrations/       # Third-party integrations (Supabase)
+├── lib/                # Utility functions and business logic
+├── routes/             # Page components (file-based routing)
+├── styles.css          # Global styles
+├── router.tsx          # Router configuration
+├── server.ts           # Server-side entry point
+└── start.ts            # TanStack Start configuration
+```
+
+## Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run lint` - Run ESLint
+- `npm run format` - Format code with Prettier
+
+## Deployment
+
+### Build for Production
+
+```bash
+npm run build
+```
+
+The build output will be in the `dist` directory.
+
+### Deploy to Cloudflare Pages
+
+The project is configured to deploy to Cloudflare Pages by default. Ensure you have the Cloudflare CLI installed and configured.
+
+```bash
+npm run build
+wrangler pages deploy dist
+```
+
+## Database Setup
+
+The application uses Supabase for authentication and data storage. You'll need to set up the following tables:
+
+- `users` - User profiles (managed by Supabase Auth)
+- `menu_items` - Restaurant menu items
+- `orders` - Customer orders
+- `order_items` - Items within each order
+
+Refer to the Supabase integration files in `src/integrations/supabase` for schema details.
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is proprietary software. All rights reserved.
+
+## Support
+
+For support, please open an issue in the repository or contact the development team.
+
+---
+
+Built with ❤️ by the TasteHub Team

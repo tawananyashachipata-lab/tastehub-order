@@ -26,9 +26,9 @@ export const Route = createFileRoute("/contact")({
 });
 
 const details = [
-  { icon: MapPin, label: "Address", value: "18 Harvest Lane, Riverside" },
-  { icon: Phone, label: "Phone", value: "+1 (555) 014-2280" },
-  { icon: Mail, label: "Email", value: "hello@tastehub.example" },
+  { icon: MapPin, label: "Address", value: "Harare,Zimbabwe" },
+  { icon: Phone, label: "Phone", value: "+263718676637" },
+  { icon: Mail, label: "Email", value: "tawananyashachipata@gmail.com" },
   { icon: Clock, label: "Hours", value: "Mon–Thu 11:00–22:00 · Fri–Sun 11:00–23:30" },
 ];
 
