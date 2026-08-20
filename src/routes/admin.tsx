@@ -46,7 +46,8 @@ const emptyForm: FormState = {
 };
 
 function AdminPage() {
-  const { user, isAdmin, loading } = useAuth();
+  const { user, isAdmin, roles, dbStatus, loading, refreshRole, promoteToAdmin } = useAuth();
+  const [rechecking, setRechecking] = useState(false);
 
   if (loading) {
     return (
@@ -66,6 +67,64 @@ function AdminPage() {
           <p className="mt-3 text-muted-foreground">
             This dashboard is for restaurant staff. {user ? "Your account isn't an admin yet." : ""}
           </p>
+
+          {user && (
+            <div className="mt-6 space-y-4">
+              <div className="rounded-xl border border-border bg-card p-4 text-left text-xs">
+                <p className="font-semibold text-foreground">Signed-in Account:</p>
+                <p className="mt-1 text-muted-foreground">
+                  <span className="font-medium text-foreground">Email:</span> {user.email}
+                </p>
+                <p className="mt-1 font-mono text-[11px] text-muted-foreground">
+                  <span className="font-sans font-medium text-foreground">User ID:</span> {user.id}
+                </p>
+                <p className="mt-1 text-muted-foreground">
+                  <span className="font-medium text-foreground">Database Status:</span>{" "}
+                  <span className="font-mono font-medium text-primary">
+                    {dbStatus ?? (roles.length > 0 ? `[ ${roles.join(", ")} ]` : "[ none ]")}
+                  </span>
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-2 sm:flex-row">
+                <Button
+                  className="flex-1"
+                  disabled={rechecking}
+                  onClick={async () => {
+                    setRechecking(true);
+                    const res = await promoteToAdmin();
+                    setRechecking(false);
+                    if (res.success) {
+                      toast.success(res.message);
+                    } else {
+                      toast.error(res.message);
+                    }
+                  }}
+                >
+                  {rechecking ? "Applying…" : "Grant My Account Admin"}
+                </Button>
+
+                <Button
+                  variant="outline"
+                  className="flex-1"
+                  disabled={rechecking}
+                  onClick={async () => {
+                    setRechecking(true);
+                    const result = await refreshRole();
+                    setRechecking(false);
+                    if (result.isAdmin) {
+                      toast.success("Admin role confirmed! Unlocking dashboard...");
+                    } else {
+                      toast.error(`Database response: ${result.status}`);
+                    }
+                  }}
+                >
+                  {rechecking ? "Checking…" : "Re-check access"}
+                </Button>
+              </div>
+            </div>
+          )}
+
           {!user && (
             <Button asChild className="mt-6">
               <Link to="/auth">Sign in</Link>
