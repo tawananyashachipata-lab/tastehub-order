@@ -134,7 +134,7 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           <div>
             <h3 className="font-display text-xl font-bold">TasteHub Restaurant</h3>
             <p className="mt-2 max-w-xs text-sm opacity-70">
-              Slow-cooked classics and wood-fired favourites, served warm since 2014.
+              Slow-cooked classics and wood-fired favourites, served warm .
             </p>
           </div>
           <div className="text-sm">
@@ -145,8 +145,8 @@ export function SiteLayout({ children }: { children: ReactNode }) {
           <div className="text-sm">
             <p className="font-semibold">Find us</p>
             <p className="mt-2 opacity-70">18 Harvest Lane, Riverside</p>
-            <p className="opacity-70">hello@tastehub.example</p>
-            <p className="opacity-70">+1 (555) 014-2280</p>
+            <p className="opacity-70">tawananyashachipata@gmail.com</p>
+            <p className="opacity-70">+263718676637</p>
           </div>
         </div>
         <div className="border-t border-espresso-foreground/10 px-4 py-4 text-center text-xs opacity-60">
